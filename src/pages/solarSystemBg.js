@@ -20,9 +20,13 @@ import { useState, useEffect } from "react";
 
 // import { camera } from "three";
 
-export default function SolarSystemBg({getCameraPos}) {
+export default function SolarSystemBg({getCameraPos, t}) {
 
-  const [cpos, setCpos] = useState([0, 0, 25]);
+  // const [cpos, setCpos] = useState([0, 0, 25]);
+  let test111 = getCameraPos();
+  console.log(test111);
+  console.log('TTT:', t);
+  const cpos = [0,0,t]
 
 
   // document.body.onscroll = moveCamera;
@@ -62,8 +66,8 @@ export default function SolarSystemBg({getCameraPos}) {
       >
         <Sun scale={[5,5,5]}/>
         <StarField />
-        {/* <CustomCamera /> */}
-        <OrbitControls />
+        <CustomCamera getCameraPos={getCameraPos}/>
+        {/* <OrbitControls /> */}
         
         <MercuryOrbit />
         <VenusOrbit />

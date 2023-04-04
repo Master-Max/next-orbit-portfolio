@@ -8,26 +8,40 @@ import { useState, useEffect } from 'react'
 
 export default function TmpIndex() {
 
-  let z = 0;
+  // const [z, setZ] = useState(25)
+  // const [tt, setTT] = useState();
+
+  let ttt = null;
+
+  let z = 25;
+  let y = 0;
 
   useEffect(() => {
-    const onScroll = () => moveCamera();
+    const onScroll = () => getScroll();
+    // setTT(document.body.getBoundingClientRect().top)
+    // setZ(getScroll());
     // clean up code
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
+    ttt = 25 + (document.body.getBoundingClientRect().top * -0.15);
+    // setTT(25 + (document.body.getBoundingClientRect().top * -0.15));
     return () => window.removeEventListener('scroll', onScroll);
+
   }, []);
 
+  // const t = document.body.getBoundingClientRect().top;
 
-  const moveCamera = () => {
+  const getScroll = () => {
     const t = document.body.getBoundingClientRect().top;
+    // setTT(document.body.getBoundingClientRect().top);
     z = 25 + (t * -0.15);
-    console.log('Scrollilng Haha')
-    console.log(z);
+    y = t * -0.08;
+    // console.log('Scrollilng Haha')
+    // console.log(z);
   }
 
   const getCameraPos = () => {
-    return(z)
+    return([0,y,z])
   }
   
 
@@ -40,11 +54,14 @@ export default function TmpIndex() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=''>
-        <div className='h-[200vh] relative z-20' onScroll={moveCamera}>
+        <div className='h-[200vh] relative z-20' onScroll={getScroll}>
           <h2 className='pt-20 text-white'>HIIII</h2>
+          {(ttt!=null)? <p className='text-white'>Yes</p>:<p className='text-white'>No</p>}
         </div>
         <h1 className='relative font-bold text-3xl z-10 text-red-500'>Test</h1>
-        <SolarSystemBg getCameraPos={getCameraPos}/>
+        
+        {/* {(tt != undefined)? <p className='text-white'>Yayy</p> :<p className='text-white'>Nooo</p>} */}
+        <SolarSystemBg getCameraPos={getCameraPos} t={ttt}/>
       </main>
     </>
   )

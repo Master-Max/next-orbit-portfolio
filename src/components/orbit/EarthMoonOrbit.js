@@ -11,7 +11,7 @@ export default function EarthMoonOrbit(props) {
 
   useFrame((state, delta) => {
     earthOrbitRef.current.rotation.y += (0.01);
-    moonOrbitRef.current.rotation.y += (0.01);
+    moonOrbitRef.current.rotation.y += (0.06667);
   })
   
   return(

@@ -28,7 +28,7 @@ export default function AsteroidBeltOrbit(props) {
       <object3D >
         <object3D ref={ceresOrbitRef}  >
           <object3D position={[30,0,0]}>
-            <JupiterMoon scale={[0.25,0.25,0.25]}/>
+            <JupiterMoon scale={[0.10,0.05,0.05]}/>
           </object3D>
         </object3D>
       </object3D >
@@ -36,7 +36,7 @@ export default function AsteroidBeltOrbit(props) {
       <object3D >
         <object3D ref={vestaOrbitRef} >
           <object3D  position={[-30,0,0]}>  
-            <JupiterMoon scale={[0.25,0.25,0.25]}/>
+            <JupiterMoon scale={[0.05,0.10,0.05]}/>
           </object3D>
         </object3D>
       </object3D >

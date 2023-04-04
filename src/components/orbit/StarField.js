@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef } from "react"; 
 import { useFrame } from "@react-three/fiber";
 import StarFieldObject from "./StarFieldObject";
 
 export default function StarField(props) {  
   
-  // const mercuryOrbitRef = useRef();
+  const starFieldOrbitRef = useRef();
+
+  useFrame((state, delta) => {
+    // starFieldOrbitRef.current.rotation.y += 0.0001
+  }) 
 
   // useFrame((state, delta) => {
   //   mercuryOrbitRef.current.rotation.y += (0.03);
@@ -16,7 +20,7 @@ export default function StarField(props) {
     let tmp = (Math.trunc(Math.random() * 10) % 2);
     //Math.trunc(Math.random() * 10) % 2
     //Number(`${Date.now()}`[12]) % 2
-    let ear = Math.trunc(Math.random() * 500);
+    let ear = Math.trunc(Math.random() * 500) + 10;
     if(tmp === 1){
         ear *= 1;
     } else {
@@ -42,7 +46,7 @@ export default function StarField(props) {
       <StarFieldObject 
         key={`SFO-${count}`}
         position={[x,y,z]}
-        scale={[1,1,1]}
+        scale={[0.5,0.5,0.5]}
       />
     )
 
@@ -57,7 +61,7 @@ export default function StarField(props) {
   
   return(
     <mesh {...props}>
-      <object3D>
+      <object3D ref={starFieldOrbitRef}>
         {NumObjectsArr}
       </object3D>
     </mesh>
