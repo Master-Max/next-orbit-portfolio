@@ -23,8 +23,8 @@ import { useState, useEffect } from "react";
 export default function SolarSystemBg({getCameraPos, t}) {
 
   // const [cpos, setCpos] = useState([0, 0, 25]);
-  let test111 = getCameraPos();
-  console.log(test111);
+  // let test111 = getCameraPos();
+  // console.log(test111);
   console.log('TTT:', t);
   const cpos = [0,0,t]
 
