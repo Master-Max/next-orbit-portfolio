@@ -1510,7 +1510,7 @@ export default function Asteroids(){
   const handleMControlsFD = () => { player.fireCannon(true); }
   const handleMControlsFU = () => { player.fireCannon(false); }
 
-  // Hmmmm
+  // Hmmmm Huhhh
 
   return(
     <>
