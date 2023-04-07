@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function SaturnRing(props) {  
+
+  const {tgArgs} = props;
+
   return(
     <mesh {...props}>
       <meshPhongMaterial 
@@ -9,7 +12,8 @@ export default function SaturnRing(props) {
         flatShading  
       />
       <torusGeometry
-        args={[1.8, .15, 16, 100 ]}
+        args={tgArgs}
+        // args={[1.8, .15, 16, 100 ]}
       />
     </mesh>
   )
