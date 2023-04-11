@@ -6,9 +6,57 @@ import { Inter } from 'next/font/google'
 import SolarSystemBg from './solarSystemBg'
 import Asteroids from '@/components/game/Asteroids'
 
+import AsteroidScore from '@/models/asteroidScoreModel'
+import connectMongo from '@/lib/connectMongo'
+
 import { useState, useEffect } from 'react'
 
-export default function TmpIndex() {
+export async function getServerSideProps(context) {
+
+  let props = {};
+
+  try{
+    await connectMongo();
+
+    let tmpScores = await AsteroidScore.find();
+
+    console.log(tmpScores);
+
+    let sortedScores = tmpScores.sort((a, b) => b.score - a.score);
+
+    console.log(sortedScores);
+
+    while(sortedScores.length < 10){
+      sortedScores.push({player_name: '___', score: 0})
+    }
+
+    props = {scores: JSON.stringify(sortedScores)};
+
+
+  }catch(error){
+
+  }
+
+
+  return {
+    props
+  }
+}
+
+export default function TmpIndex({scores}) {
+
+  console.log(scores);
+
+  let allScores = [];
+  
+  try{
+    allScores = JSON.parse(scores);
+  }catch(error){
+    allScores = [{player_name: 'ERROR', score: 0}]
+  }
+
+
+  console.log(allScores)
 
   // const [z, setZ] = useState(25)
   // const [tt, setTT] = useState();
@@ -46,6 +94,21 @@ export default function TmpIndex() {
     return([0,y,z])
   }
   
+  const generateLeaderboard = () => {
+    return(
+      <div className='grid place-items-center'>
+          <h3 className='text-5xl text-white mb-2'>Highscores</h3>
+            {allScores.map((item, index) => {return(
+              <div key={`${index}-${item.player_name}`}
+                className='grid grid-cols-2 gap-4'
+              >
+                <p className='text-white text-xl'>{item.player_name}</p>
+                <p className='text-white text-xl'>{item.score}</p>
+              </div>
+            )})}
+          </div>
+    )
+  }
 
   return (
     <>
@@ -64,9 +127,24 @@ export default function TmpIndex() {
         
         {/* {(tt != undefined)? <p className='text-white'>Yayy</p> :<p className='text-white'>Nooo</p>} */}
         
-        <div className='relative z-10'>
-          <Asteroids/>
+        <div className='relative z-20 h-[100vh] w-full'>
+          
+          {/* {generateLeaderboard()} */}
+          <div className='z-50'>
+            {/* <Asteroids/> */}
+          </div>
         </div>
+        {/* <div className='relative z-10 h-[100vh] w-full'>
+          <div className='grid h-full w-full place-items-center'>
+            <div className='z-50'>
+              {generateLeaderboard()}
+            </div>
+            <canvas className='absolute top-0 left-0 z-10' id='game-canvas'></canvas>
+            <Asteroids/>
+          </div>
+        </div> */}
+        <Asteroids generateLeaderboard={generateLeaderboard}/>
+
 
         <SolarSystemBg getCameraPos={getCameraPos} t={ttt}/>
       </main>

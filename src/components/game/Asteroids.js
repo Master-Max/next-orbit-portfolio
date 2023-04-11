@@ -1,8 +1,10 @@
 import React from "react"
 import { useEffect, useRef, useState } from "react";
 
-export default function Asteroids(){
+export default function Asteroids({generateLeaderboard}){
 
+  // const [gameIsRunning, setGameIsRunning] = useState(false);
+  let gameIsRunning = false;
   const [highscore, setHighscore] = useState();
   const [showAddName, setShowAddName] = useState();
   // const scoreInputRef = useRef();
@@ -50,12 +52,16 @@ export default function Asteroids(){
     }
   }
 
+  let player;
 
   useEffect(() => {
 
     const html = document.documentElement;
     const html_height = html.clientHeight;
     const html_width = html.clientWidth;
+    // let player;
+    // makeTmpPlayer();
+
     console.log("HTML (H,W) | (" + html_height + ', ' + html_width + ")");
     
     canvas = document.getElementById('game-canvas');
@@ -112,8 +118,9 @@ export default function Asteroids(){
   /****************************************
   *Player Stuff
   *****************************************/
-  let player;
-  // let [player, setPlayer] = useState(undefined)
+  // let player;
+  // var player = undefined;
+  // const [player, setPlayer] = useState(undefined)
   // const getPlayer = () => {
   //   return(player)
   // }
@@ -1177,9 +1184,20 @@ export default function Asteroids(){
   * Nobs Section
   *****************************************/
   const handleStartButton = () => {
-
+    // setGameIsRunning(true);
+    gameIsRunning = true;
+    
     document.addEventListener('keydown', downKey);
     document.addEventListener('keyup', upKey);
+
+    let qButton = document.getElementById('quarter-button');
+    let mControls = document.getElementById('mobile-controls');
+    let hScores = document.getElementById('leaderboard');
+
+    qButton.style.display = 'none';
+    mControls.style.display = 'block';
+    hScores.style.opacity = 0;
+
 
     console.log('PLAYER SPAWN TEST')
     console.log(player)
@@ -1343,7 +1361,7 @@ export default function Asteroids(){
   /****************************************
   * Player Making
   *****************************************/
-  function makeTmpPlayer() {
+  async function makeTmpPlayer() {
     let h = height;
     let w = width;
     const data = {
@@ -1360,7 +1378,9 @@ export default function Asteroids(){
       ammo:4
     };
     player = new Player(data);
-    renderQueue.push(player);
+    console.log(player);
+    // setPlayer(tmpPlayer)
+    renderQueue.push(player)
   }
 
 
@@ -1474,32 +1494,20 @@ export default function Asteroids(){
     })
   }
 
-  const handleMControlsLD = () => {
-    // console.log(renderQueue[0])
-    renderQueue[0].turnLeft(true);
-    // renderQueue[0];
-    // player.turnLeft(true);
-  //   break;
-  // case 'KeyS':
-  //   player.turnRight(true);
-  //   break;
-  // case 'KeyD':
-  //   player.burnEngine(true);
-  //   break;
-  // case 'KeyF':
-  //   player.fireCannon(true);
-
+  const handleMControlsLD = () => { 
+    console.log('Clicking Mobile Controls')
+    console.log(renderQueue);
+    console.log(player)
+    renderQueue[0].turnLeft(true)
   }
   const handleMControlsLU = () => {
     renderQueue[0].turnLeft(false)
   }
 
   const handleMControlsRD = () => {
-    console.log(player);
     player.turnRight(true);
   }
   const handleMControlsRU = () => {
-    // console.log(player);
     player.turnRight(false);
   }
   
@@ -1512,11 +1520,63 @@ export default function Asteroids(){
 
   // Hmmmm Huhhh
 
+  const generateMobileControls = () => {
+
+    console.log('Generating Mobile Controlls', player)
+
+    return(
+      <div id='controls' className="bg-grey-300 rounded w-full flex justify-center">
+        <button className="rounded h-20 w-20 bg-white m-2" 
+        onMouseDown={handleMControlsLD} 
+        onMouseUp={handleMControlsLU} 
+        onTouchStart={handleMControlsLD} 
+        onTouchEnd={handleMControlsLU}></button>
+
+        <button className="rounded h-20 w-20 bg-white m-2" 
+        onMouseDown={handleMControlsRD} 
+        onMouseUp={handleMControlsRU}
+        onTouchStart={handleMControlsRD} 
+        onTouchEnd={handleMControlsRU}></button>
+
+
+        <button className="rounded h-20 w-20 bg-blue-500 m-2" 
+        onMouseDown={handleMControlsBD}
+        onMouseUp={handleMControlsBU}
+        onTouchStart={handleMControlsBD} 
+        onTouchEnd={handleMControlsBU}></button>
+
+        <button className="rounded h-20 w-20 bg-red-500 m-2" 
+        onMouseDown={handleMControlsFD}
+        onMouseUp={handleMControlsFU}
+        onTouchStart={handleMControlsFD} 
+        onTouchEnd={handleMControlsFU}></button>
+
+      </div>
+    )
+  }
+
   return(
     <>
-      <canvas id='game-canvas'></canvas>
+      <div className='relative z-10 h-[100vh] w-full'>
+        <div className='grid h-full w-full place-items-center'>
+          <div id='leaderboard' className='z-50'>
+              {generateLeaderboard()}
+          </div>
+          <canvas className='absolute top-0 left-0 z-10' id='game-canvas'></canvas>
+          
+          {/* <div className='h-[80vh]'>Test</div> */}
+          <button id='quarter-button' onClick={handleStartButton} className="mt-24 p-8 bg-green-500 text-white rounded"> Insert Quarter </button> 
+          
+          <div id='mobile-controls' className="hidden mt-36 p-8">{generateMobileControls()}</div>
 
-      <button 
+        </div>
+        {/* {generateMobileControls()} */}
+      </div>
+
+
+      {/* <canvas id='game-canvas'></canvas> */}
+
+      {/* <button 
         className="p-2 bg-white rounded" 
         onClick={handleStartButton}
       >
@@ -1527,11 +1587,11 @@ export default function Asteroids(){
         onClick={handlePauseButton}
       >
         Pause
-      </button>
+      </button> */}
 
-      <button className="p-8 bg-green-500 text-white rounded"> Insert Quarter </button>
+      {/* <button className="p-8 bg-green-500 text-white rounded"> Insert Quarter </button> */}
       
-      <div id='controls' className="bg-grey-300 rounded w-full flex justify-center">
+      {/* <div id='controls' className="bg-grey-300 rounded w-full flex justify-center z-50">
         <button className="rounded h-8 w-20 bg-white m-2" 
         onMouseDown={handleMControlsLD} 
         onMouseUp={handleMControlsLU} 
@@ -1556,7 +1616,7 @@ export default function Asteroids(){
         onTouchStart={handleMControlsFD} 
         onTouchEnd={handleMControlsFU}></button>
 
-      </div>
+      </div> */}
 
 
       <form onSubmit={handleTestScore} className="border bg-white">
