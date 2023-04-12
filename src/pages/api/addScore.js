@@ -32,7 +32,9 @@ export default async function handler(req, res) {
       player_name,
       score,
     })
-    newAsteroidScore.save()
+    await newAsteroidScore.save()
+
+    console.log(newAsteroidScore);
 
     res.status(200).json({ result: JSON.stringify(newAsteroidScore), success: true })
 
