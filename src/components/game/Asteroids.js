@@ -1534,26 +1534,26 @@ export default function Asteroids({generateLeaderboard}){
 
     return(
       <div id='controls' className="bg-grey-300 rounded flex justify-center">
-        <button className="rounded h-[14vw] w-[14vw] bg-white my-2" 
+        <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-white my-2" 
         onMouseDown={handleMControlsLD} 
         onMouseUp={handleMControlsLU} 
         onTouchStart={handleMControlsLD} 
         onTouchEnd={handleMControlsLU}></button>
 
-        <button className="rounded h-[14vw] w-[14vw] bg-white ml-[6vw] mr-[3vw] my-2" 
+        <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-white ml-[6vw] mr-[3vw] my-2" 
         onMouseDown={handleMControlsRD} 
         onMouseUp={handleMControlsRU}
         onTouchStart={handleMControlsRD} 
         onTouchEnd={handleMControlsRU}></button>
 
 
-        <button className="rounded h-[14vw] w-[14vw] bg-blue-500 mr-[6vw] ml-[3vw] my-2" 
+        <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-blue-500 mr-[6vw] ml-[3vw] my-2" 
         onMouseDown={handleMControlsBD}
         onMouseUp={handleMControlsBU}
         onTouchStart={handleMControlsBD} 
         onTouchEnd={handleMControlsBU}></button>
 
-        <button className="rounded h-[14vw] w-[14vw] bg-red-500 my-2" 
+        <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-red-500 my-2" 
         onMouseDown={handleMControlsFD}
         onMouseUp={handleMControlsFU}
         onTouchStart={handleMControlsFD} 
