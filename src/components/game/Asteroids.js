@@ -79,7 +79,7 @@ export default function Asteroids({generateLeaderboard}){
 
 
     // document.addEventListener('keyup', upKey);
-  
+
 
   }, []);
   
@@ -1186,6 +1186,9 @@ export default function Asteroids({generateLeaderboard}){
   const handleStartButton = () => {
     // setGameIsRunning(true);
     gameIsRunning = true;
+
+    const tmpGameDiv = document.getElementById('game-div');
+    tmpGameDiv.addEventListener("contextmenu", (e) => {e.preventDefault()});
     
     document.addEventListener('keydown', downKey);
     document.addEventListener('keyup', upKey);
@@ -1525,27 +1528,27 @@ export default function Asteroids({generateLeaderboard}){
     console.log('Generating Mobile Controlls', player)
 
     return(
-      <div id='controls' className="bg-grey-300 rounded w-full flex justify-center">
-        <button className="rounded h-20 w-20 bg-white m-2" 
+      <div id='controls' className="bg-grey-300 rounded flex justify-center">
+        <button className="rounded h-[15vw] w-[15vw] bg-white m-2" 
         onMouseDown={handleMControlsLD} 
         onMouseUp={handleMControlsLU} 
         onTouchStart={handleMControlsLD} 
         onTouchEnd={handleMControlsLU}></button>
 
-        <button className="rounded h-20 w-20 bg-white m-2" 
+        <button className="rounded h-[15vw] w-[15vw] bg-white m-2" 
         onMouseDown={handleMControlsRD} 
         onMouseUp={handleMControlsRU}
         onTouchStart={handleMControlsRD} 
         onTouchEnd={handleMControlsRU}></button>
 
 
-        <button className="rounded h-20 w-20 bg-blue-500 m-2" 
+        <button className="rounded h-[15vw] w-[15vw] bg-blue-500 m-2" 
         onMouseDown={handleMControlsBD}
         onMouseUp={handleMControlsBU}
         onTouchStart={handleMControlsBD} 
         onTouchEnd={handleMControlsBU}></button>
 
-        <button className="rounded h-20 w-20 bg-red-500 m-2" 
+        <button className="rounded h-[15vw] w-[15vw] bg-red-500 m-2" 
         onMouseDown={handleMControlsFD}
         onMouseUp={handleMControlsFU}
         onTouchStart={handleMControlsFD} 
@@ -1557,7 +1560,7 @@ export default function Asteroids({generateLeaderboard}){
 
   return(
     <>
-      <div className='relative z-10 h-[100vh] w-full'>
+      <div id="game-div" className='relative z-10 h-[100vh] w-full'>
         <div className='grid h-full w-full place-items-center'>
           <div id='leaderboard' className='z-50'>
               {generateLeaderboard()}
