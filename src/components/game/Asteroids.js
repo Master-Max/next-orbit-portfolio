@@ -1529,26 +1529,34 @@ export default function Asteroids({generateLeaderboard}){
         onMouseDown={handleMControlsLD} 
         onMouseUp={handleMControlsLU} 
         onTouchStart={handleMControlsLD} 
-        onTouchEnd={handleMControlsLU}></button>
+        onTouchEnd={handleMControlsLU}> 
+        <p className="text-xl font-bold text-black">A - Left</p>
+        </button>
 
         <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-white ml-[6vw] mr-[3vw] my-2" 
         onMouseDown={handleMControlsRD} 
         onMouseUp={handleMControlsRU}
         onTouchStart={handleMControlsRD} 
-        onTouchEnd={handleMControlsRU}></button>
+        onTouchEnd={handleMControlsRU}>
+          <p className="text-xl font-bold text-black">S - Right</p>
+        </button>
 
 
         <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-blue-500 mr-[6vw] ml-[3vw] my-2" 
         onMouseDown={handleMControlsBD}
         onMouseUp={handleMControlsBU}
         onTouchStart={handleMControlsBD} 
-        onTouchEnd={handleMControlsBU}></button>
+        onTouchEnd={handleMControlsBU}>
+          <p className="text-xl font-bold text-white">D - Engine</p>
+        </button>
 
         <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-red-500 my-2" 
         onMouseDown={handleMControlsFD}
         onMouseUp={handleMControlsFU}
         onTouchStart={handleMControlsFD} 
-        onTouchEnd={handleMControlsFU}></button>
+        onTouchEnd={handleMControlsFU}>
+          <p className="text-xl font-bold text-white">F - Shoot</p>
+        </button>
 
       </div>
     )
