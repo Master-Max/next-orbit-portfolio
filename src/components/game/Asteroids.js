@@ -1529,26 +1529,26 @@ export default function Asteroids({generateLeaderboard}){
 
     return(
       <div id='controls' className="bg-grey-300 rounded flex justify-center">
-        <button className="rounded h-[15vw] w-[15vw] bg-white m-2" 
+        <button className="rounded h-[14vw] w-[14vw] bg-white my-2" 
         onMouseDown={handleMControlsLD} 
         onMouseUp={handleMControlsLU} 
         onTouchStart={handleMControlsLD} 
         onTouchEnd={handleMControlsLU}></button>
 
-        <button className="rounded h-[15vw] w-[15vw] bg-white m-2" 
+        <button className="rounded h-[14vw] w-[14vw] bg-white ml-8 mr-4 my-2" 
         onMouseDown={handleMControlsRD} 
         onMouseUp={handleMControlsRU}
         onTouchStart={handleMControlsRD} 
         onTouchEnd={handleMControlsRU}></button>
 
 
-        <button className="rounded h-[15vw] w-[15vw] bg-blue-500 m-2" 
+        <button className="rounded h-[14vw] w-[14vw] bg-blue-500 mr-8 ml-4 my-2" 
         onMouseDown={handleMControlsBD}
         onMouseUp={handleMControlsBU}
         onTouchStart={handleMControlsBD} 
         onTouchEnd={handleMControlsBU}></button>
 
-        <button className="rounded h-[15vw] w-[15vw] bg-red-500 m-2" 
+        <button className="rounded h-[14vw] w-[14vw] bg-red-500 my-2" 
         onMouseDown={handleMControlsFD}
         onMouseUp={handleMControlsFU}
         onTouchStart={handleMControlsFD} 
