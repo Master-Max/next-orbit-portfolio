@@ -1,7 +1,14 @@
 import AsteroidScore from "../../models/asteroidScoreModel";
 import connectMongo from "../../lib/connectMongo";
+import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {
+
+  await NextCors(req, res, {
+    methods:['POST'],
+    origin: '*',
+    optionsSuccessStatus: 200,
+  })
   
   if(req.method !==  'POST'){
     res.status(422).json({error: 'Error'})
