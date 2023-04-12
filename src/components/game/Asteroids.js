@@ -1192,8 +1192,10 @@ export default function Asteroids({generateLeaderboard}){
     // setGameIsRunning(true);
     gameIsRunning = true;
 
-    const tmpGameDiv = document.getElementById('game-div');
-    tmpGameDiv.addEventListener("contextmenu", (e) => {e.preventDefault()});
+    // const tmpGameDiv = document.getElementById('game-div');
+    // tmpGameDiv.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+    document.addEventListener("contextmenu", (e) => {e.preventDefault()} )
     
     document.addEventListener('keydown', downKey);
     document.addEventListener('keyup', upKey);
@@ -1502,29 +1504,18 @@ export default function Asteroids({generateLeaderboard}){
     })
   }
 
-  const handleMControlsLD = () => { 
-    console.log('Clicking Mobile Controls')
-    console.log(renderQueue);
-    console.log(player)
-    renderQueue[0].turnLeft(true)
-  }
-  const handleMControlsLU = () => {
-    renderQueue[0].turnLeft(false)
-  }
+  const handleMControlsLD = (e) => { e.preventDefault(); renderQueue[0].turnLeft(true); }
+  const handleMControlsLU = (e) => { renderQueue[0].turnLeft(false); }
 
-  const handleMControlsRD = () => {
-    player.turnRight(true);
-  }
-  const handleMControlsRU = () => {
-    player.turnRight(false);
-  }
+  const handleMControlsRD = (e) => { e.preventDefault(); player.turnRight(true); }
+  const handleMControlsRU = (e) => { player.turnRight(false); }
   
   
-  const handleMControlsBD = () => { player.burnEngine(true); }
-  const handleMControlsBU = () => { player.burnEngine(false); }
+  const handleMControlsBD = (e) => { e.preventDefault(); player.burnEngine(true); }
+  const handleMControlsBU = (e) => { player.burnEngine(false); }
 
-  const handleMControlsFD = () => { player.fireCannon(true); }
-  const handleMControlsFU = () => { player.fireCannon(false); }
+  const handleMControlsFD = (e) => { e.preventDefault(); player.fireCannon(true); }
+  const handleMControlsFU = (e) => { player.fireCannon(false); }
 
   // Hmmmm Huhhh
 
