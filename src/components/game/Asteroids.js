@@ -1567,8 +1567,7 @@ export default function Asteroids({generateLeaderboard}){
           
           {/* <div style={{height: 'calc(100% - 200px)'}}>Test</div> */}
           <div className="grid place-items-center h-[200px]">
-            <button id='quarter-button' onClick={handleStartButton} className="p-8 bg-green-500 text-white rounded"> Insert Quarter </button> 
-          
+            <a href="#game-div"><button id='quarter-button' onClick={handleStartButton} className="p-8 bg-green-500 text-white rounded"> Insert Quarter </button></a>  
             <div id='mobile-controls' className="hidden">{generateMobileControls()}</div>
           </div>
           
