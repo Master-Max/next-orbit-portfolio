@@ -70,6 +70,11 @@ export default function Asteroids({generateLeaderboard}){
     canvas.height = html_height - 200;
     canvas.width = html_width;
 
+    let tmpSpacer = document.getElementById('canvas-spacer');
+    console.log('tmpSpacer', tmpSpacer);
+    // tmpSpacer.height = html_height - 200;
+    // tmpSpacer.widht = html_width;
+    tmpSpacer.style.height = `${document.documentElement.clientHeight - 200}px`;
 
 
     width = canvas.width;
@@ -1535,14 +1540,14 @@ export default function Asteroids({generateLeaderboard}){
         onTouchStart={handleMControlsLD} 
         onTouchEnd={handleMControlsLU}></button>
 
-        <button className="rounded h-[14vw] w-[14vw] bg-white ml-8 mr-4 my-2" 
+        <button className="rounded h-[14vw] w-[14vw] bg-white ml-[6vw] mr-[3vw] my-2" 
         onMouseDown={handleMControlsRD} 
         onMouseUp={handleMControlsRU}
         onTouchStart={handleMControlsRD} 
         onTouchEnd={handleMControlsRU}></button>
 
 
-        <button className="rounded h-[14vw] w-[14vw] bg-blue-500 mr-8 ml-4 my-2" 
+        <button className="rounded h-[14vw] w-[14vw] bg-blue-500 mr-[6vw] ml-[3vw] my-2" 
         onMouseDown={handleMControlsBD}
         onMouseUp={handleMControlsBU}
         onTouchStart={handleMControlsBD} 
@@ -1561,16 +1566,21 @@ export default function Asteroids({generateLeaderboard}){
   return(
     <>
       <div id="game-div" className='relative z-10 h-[100vh] w-full'>
-        <div className='grid h-full w-full place-items-center'>
-          <div id='leaderboard' className='z-50'>
-              {generateLeaderboard()}
+        <div className='grid h-full w-full '>
+          <div id='canvas-spacer' className="grid place-items-center">
+            <div id='leaderboard' className='z-50'>
+                {generateLeaderboard()}
+            </div>
           </div>
           <canvas className='absolute top-0 left-0 z-10' id='game-canvas'></canvas>
           
-          {/* <div className='h-[80vh]'>Test</div> */}
-          <button id='quarter-button' onClick={handleStartButton} className="mt-24 p-8 bg-green-500 text-white rounded"> Insert Quarter </button> 
+          {/* <div style={{height: 'calc(100% - 200px)'}}>Test</div> */}
+          <div className="grid place-items-center h-[200px]">
+            <button id='quarter-button' onClick={handleStartButton} className="p-8 bg-green-500 text-white rounded"> Insert Quarter </button> 
           
-          <div id='mobile-controls' className="hidden mt-36 p-8">{generateMobileControls()}</div>
+            <div id='mobile-controls' className="hidden">{generateMobileControls()}</div>
+          </div>
+          
 
         </div>
         {/* {generateMobileControls()} */}
@@ -1622,11 +1632,11 @@ export default function Asteroids({generateLeaderboard}){
       </div> */}
 
 
-      <form onSubmit={handleTestScore} className="border bg-white">
+      {/* <form onSubmit={handleTestScore} className="border bg-white">
         <input placeholder="AAA" ref={testNameRef}></input>
         <input placeholder="000" ref={testScoreRef}></input>
         <button type="submit">Test Score Add</button>
-      </form>
+      </form> */}
       
     </>
   )
