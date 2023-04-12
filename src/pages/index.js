@@ -30,6 +30,8 @@ export async function getServerSideProps(context) {
       sortedScores.push({player_name: '___', score: 0})
     }
 
+    sortedScores.length = 10;
+
     props = {scores: JSON.stringify(sortedScores)};
 
 
@@ -57,6 +59,8 @@ export default function TmpIndex({scores}) {
 
 
   console.log(allScores)
+
+  const [newAllScores, setNewAllScores] = useState(allScores)
 
   // const [z, setZ] = useState(25)
   // const [tt, setTT] = useState();
@@ -94,15 +98,16 @@ export default function TmpIndex({scores}) {
     return([0,y,z])
   }
   
-  const generateLeaderboard = () => {
+  const generateLeaderboard = (scores) => {
     return(
       <div className='grid place-items-center'>
-          <h3 className='text-5xl text-white mb-2'>Highscores</h3>
-            {allScores.map((item, index) => {return(
+          <h3 className='text-5xl text-white mb-2'>LEADERBOARD</h3>
+            {scores.map((item, index) => {return(
               <div key={`${index}-${item.player_name}`}
-                className='grid grid-cols-2 gap-4'
+                className='grid grid-cols-3 gap-4'
               >
-                <p className='text-white text-xl'>{item.player_name}</p>
+                <p className='text-white text-xl'>{index+1}.</p>
+                <p className='text-white text-xl w-16'>{item.player_name}</p>
                 <p className='text-white text-xl'>{item.score}</p>
               </div>
             )})}
@@ -143,7 +148,7 @@ export default function TmpIndex({scores}) {
             <Asteroids/>
           </div>
         </div> */}
-        <Asteroids generateLeaderboard={generateLeaderboard}/>
+        <Asteroids generateLeaderboard={generateLeaderboard} allScores={newAllScores} setNewAllScores={setNewAllScores}/>
 
 
         <SolarSystemBg getCameraPos={getCameraPos} t={ttt}/>

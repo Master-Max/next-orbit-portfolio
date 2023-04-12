@@ -1,7 +1,7 @@
 import React from "react"
 import { useEffect, useRef, useState } from "react";
 
-export default function Asteroids({generateLeaderboard}){
+export default function Asteroids({generateLeaderboard, allScores, setNewAllScores}){
 
   // const [gameIsRunning, setGameIsRunning] = useState(false);
   let gameIsRunning = false;
@@ -435,7 +435,8 @@ export default function Asteroids({generateLeaderboard}){
         if(this.score > 0 && !this.ranGotNewHSOnce){
           this.ranGotNewHSOnce = true;
           // setHighscore(this.score);
-          testScoreRef.current.value = this.score
+          testScoreRef.current.value = this.score;
+          document.getElementById('score-form').style.display = 'grid'
           // TODO highscore Thingy
           // if(this.gotNewHighscore2()){
           //   console.log('YAY!');
@@ -1206,7 +1207,7 @@ export default function Asteroids({generateLeaderboard}){
 
     qButton.style.display = 'none';
     mControls.style.display = 'block';
-    hScores.style.opacity = 0;
+    hScores.style.display = 'none';
 
 
     console.log('PLAYER SPAWN TEST')
@@ -1485,6 +1486,63 @@ export default function Asteroids({generateLeaderboard}){
   * End Of Script Section
   *****************************************/
 
+  // const newPlayerNameRef = useRef();
+  // const newPlayerScoreRef = useRef();
+
+  const handleGameOver = (newScore) => {
+    // if(newScore.score)
+    console.log('In Game Over')
+    console.log(newScore);
+    let parsedNewScore = JSON.parse(newScore.result);
+    console.log(parsedNewScore)
+    console.log(allScores);
+
+    let newAll = []
+
+    console.log('NEW ALL\n=================================')
+
+    for(let i = 0; i< allScores.length; i++){
+      if(allScores[i].score < parsedNewScore.score){
+        newAll = [...allScores.slice(0,i)];
+        console.log(newAll)
+        newAll.push(parsedNewScore);
+        newAll = newAll.concat(allScores.slice(i));
+        break;
+      }
+    }
+
+    newAll.length = 10;
+
+    console.log('newALL', newAll)
+
+    // newPlayerNameRef.current.value = parsedNewScore.player_name;
+    // newPlayerScoreRef.current.value = parsedNewScore.score;
+
+    let tmpNPN = document.getElementById('npn-id');
+    tmpNPN.innerText = parsedNewScore.player_name;
+    let tmpNPS = document.getElementById('nps-id');
+    tmpNPS.innerText = parsedNewScore.score;
+
+    // let qButton = document.getElementById('quarter-button');
+    let mControls = document.getElementById('mobile-controls');
+    let hScores = document.getElementById('leaderboard');
+    document.getElementById('score-form').style.display = 'none';
+    document.getElementById('player-new-score').style.display = 'grid';
+
+    // qButton.style.display = 'none';
+    mControls.style.display = 'none';
+    hScores.style.display = 'grid';
+
+    // const newLeaderboard = generateLeaderboard(newAll);
+
+    // console.log(newLeaderboard);
+    // console.log(JSON.stringify(newLeaderboard))
+    // console.log(hScores)
+    // hScores.props.children = newLeaderboard;
+    // hScores.innerHTML = <>{generateLeaderboard(newAll)}</>;
+    // setNewAllScores(newAll);
+  }
+
   const testNameRef = useRef();
   const testScoreRef = useRef();
   const handleTestScore = async (e) => {
@@ -1494,6 +1552,10 @@ export default function Asteroids({generateLeaderboard}){
       player_name: testNameRef.current.value,
       score: testScoreRef.current.value,
     }
+    
+    if(testNameRef.current.value.length <= 0){
+      tmpBody.player_name = 'AAA'
+    }
 
     const response = await fetch(`/api/addScore`, {
       method: 'POST',
@@ -1502,6 +1564,10 @@ export default function Asteroids({generateLeaderboard}){
         'Content-Type': 'application/json'
       }
     })
+
+    let data = await response.json();
+    handleGameOver(data);
+
   }
 
   const handleMControlsLD = (e) => { e.preventDefault(); renderQueue[0].turnLeft(true); }
@@ -1530,7 +1596,7 @@ export default function Asteroids({generateLeaderboard}){
         onMouseUp={handleMControlsLU} 
         onTouchStart={handleMControlsLD} 
         onTouchEnd={handleMControlsLU}> 
-        <p className="text-xl font-bold text-black">A - Left</p>
+        <p className="text-xl font-bold text-black sm:text-md sm:font-normal">A - Left</p>
         </button>
 
         <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-white ml-[6vw] mr-[3vw] my-2" 
@@ -1538,7 +1604,7 @@ export default function Asteroids({generateLeaderboard}){
         onMouseUp={handleMControlsRU}
         onTouchStart={handleMControlsRD} 
         onTouchEnd={handleMControlsRU}>
-          <p className="text-xl font-bold text-black">S - Right</p>
+          <p className="text-xl font-bold text-black sm:text-md sm:font-normal">S - Right</p>
         </button>
 
 
@@ -1547,7 +1613,7 @@ export default function Asteroids({generateLeaderboard}){
         onMouseUp={handleMControlsBU}
         onTouchStart={handleMControlsBD} 
         onTouchEnd={handleMControlsBU}>
-          <p className="text-xl font-bold text-white">D - Engine</p>
+          <p className="text-xl font-bold text-white sm:text-md sm:font-normal">D - Engine</p>
         </button>
 
         <button className="rounded max-h-[144px] max-w-[144px] h-[14vw] w-[14vw] bg-red-500 my-2" 
@@ -1555,11 +1621,21 @@ export default function Asteroids({generateLeaderboard}){
         onMouseUp={handleMControlsFU}
         onTouchStart={handleMControlsFD} 
         onTouchEnd={handleMControlsFU}>
-          <p className="text-xl font-bold text-white">F - Shoot</p>
+          <p className="text-xl font-bold text-white sm:text-md sm:font-normal">F - Shoot</p>
         </button>
 
       </div>
     )
+  }
+
+  const handlePlayerNameInput = () => {
+    let tmpCurrName = testNameRef.current.value;
+    console.log(tmpCurrName);
+    if(tmpCurrName.length > 3){
+      tmpCurrName = tmpCurrName.substring(0,3);
+    }
+    tmpCurrName = tmpCurrName.toUpperCase();
+    testNameRef.current.value = tmpCurrName;
   }
 
   return(
@@ -1567,15 +1643,32 @@ export default function Asteroids({generateLeaderboard}){
       <div id="game-div" className='relative z-10 h-[100vh] w-full'>
         <div className='grid h-full w-full '>
           <div id='canvas-spacer' className="grid place-items-center">
-            <div id='leaderboard' className='z-50'>
-                {generateLeaderboard()}
+            <div id='leaderboard' className='z-50 grid'>
+                {generateLeaderboard(allScores)}
+                <div>
+                  <div id='player-new-score' className='grid place-items-center hidden'>
+                    <h3 className='text-5xl text-white mt-8 mb-2'>YOUR SCORE</h3>
+                    <div className='grid grid-cols-3 gap-4'>
+                        <p className='text-white text-xl'>?.</p>
+                        <p className='text-white text-xl w-16' id='npn-id'></p>
+                        <p className='text-white text-xl' id='nps-id'></p>
+                    </div>
+                </div>
             </div>
+            </div>
+            <form id='score-form' onSubmit={handleTestScore} className="hidden grid place-items-center border bg-white z-50 p-4 rounded opacity-85">
+              <label className="pb-2">ENTER NAME</label>
+              <input placeholder="AAA" className='text-center outline focus:outline-lg rounded py-2' ref={testNameRef} onChange={handlePlayerNameInput}></input>
+              <label className="pt-4">YOUR SCORE</label>
+              <input placeholder="000"  className='text-center py-2' ref={testScoreRef} disabled={true}></input>
+              <button type="submit" className="bg-green-500 hover:bg-green-200 text-white py-2 px-4 rounded">SUBMIT SCORE</button>
+            </form>
           </div>
           <canvas className='absolute top-0 left-0 z-10' id='game-canvas'></canvas>
           
           {/* <div style={{height: 'calc(100% - 200px)'}}>Test</div> */}
           <div className="grid place-items-center h-[200px]">
-            <a href="#game-div"><button id='quarter-button' onClick={handleStartButton} className="p-8 bg-green-500 text-white rounded"> Insert Quarter </button></a>  
+            <a href="#game-div"><button id='quarter-button' onClick={handleStartButton} className="p-8 bg-green-500 hover:bg-green-200 text-white rounded"> Insert Quarter </button></a>  
             <div id='mobile-controls' className="hidden">{generateMobileControls()}</div>
           </div>
           
