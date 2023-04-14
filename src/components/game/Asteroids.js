@@ -432,7 +432,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
         this.lVelocity = 0;
         this.isAlive = false;
         this.slowdown = false;
-        if(this.score > 0 && !this.ranGotNewHSOnce){
+        if(this.score >= 0 && !this.ranGotNewHSOnce){
           this.ranGotNewHSOnce = true;
           // setHighscore(this.score);
           testScoreRef.current.value = this.score;
@@ -1670,6 +1670,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
         <div className='grid h-full w-full '>
           <div id='canvas-spacer' className="grid place-items-center">
             <div id='leaderboard' className='z-50 grid'>
+            <h2 className="font-bold text-8xl text-white mb-12">ASTEROIDS</h2>
                 {generateLeaderboard(allScores)}
                 <div>
                   <div id='player-new-score' className='grid place-items-center hidden'>
