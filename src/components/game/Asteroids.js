@@ -1193,6 +1193,9 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
     renderQueue.length = 0;
     asteroidQueue.length = 0; 
 
+    currentLevel = 1;
+    currentSpawnNumber = 4;
+
     document.addEventListener("contextmenu", (e) => {e.preventDefault()} )
     
     document.addEventListener('keydown', downKey);
