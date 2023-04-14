@@ -450,7 +450,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
       }
     }
 
-    checkContact(){
+    checkContact(){ //TODO not accurate to renderQueue, sometimes you hit midding asteroids :/
       let data = {
         result: false,
         object: null
@@ -1189,6 +1189,29 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
   /****************************************
   * Nobs Section
   *****************************************/
+  const handleGameReplay = () => {
+    renderQueue.length = 0;
+    asteroidQueue.length = 0; 
+
+    document.addEventListener("contextmenu", (e) => {e.preventDefault()} )
+    
+    document.addEventListener('keydown', downKey);
+    document.addEventListener('keyup', upKey);
+
+    // let qButton = document.getElementById('quarter-button');
+  
+    document.getElementById('mobile-controls').style.display = 'block';
+
+    document.getElementById('leaderboard').style.display = 'none';
+    
+    document.getElementById('player-new-score').style.display = 'none';
+
+
+    makeTmpPlayer();
+    start();
+  }
+
+
   const handleStartButton = () => {
     // setGameIsRunning(true);
     gameIsRunning = true;
@@ -1653,6 +1676,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
                         <p className='text-white text-xl w-16' id='npn-id'></p>
                         <p className='text-white text-xl' id='nps-id'></p>
                     </div>
+                    <button className="px-4 py-2 mt-6 bg-green-500 hover:bg-green-200 text-white rounded" onClick={handleGameReplay}>REPLAY</button>
                 </div>
             </div>
             </div>
