@@ -1222,8 +1222,9 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
     // const tmpGameDiv = document.getElementById('game-div');
     // tmpGameDiv.addEventListener("contextmenu", (e) => {e.preventDefault()});
 
-    document.addEventListener("contextmenu", (e) => {e.preventDefault()} )
-    
+    document.addEventListener("contextmenu", (e) => {e.preventDefault()});
+    document.addEventListener('scroll', (e) => {e.preventDefault()});
+
     document.addEventListener('keydown', downKey);
     document.addEventListener('keyup', upKey);
 
