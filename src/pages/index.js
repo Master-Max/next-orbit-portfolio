@@ -133,13 +133,18 @@ export default function TmpIndex({scores}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='' onScroll={getScroll}>
-        <div className='h-[200vh] relative z-20 text-white'>
+        <div className='h-[200vh] w-[100vw] relative z-20 text-white'>
           <div className='p-8'>
             <h2 className='pt-20 pl-20 text-white text-2xl font-bold'>Max Petersen</h2>
             <h3 className='pt-12 pl-20 text-white'>Software Engineer</h3>
             <h3 className='pt-2 pl-20 text-white'>Game Designer</h3>
             <h3 className='pt-2 pl-20 text-white'>Backyard Astronomer</h3>
           </div>
+
+          {/* <div className='relative right-0 bottom-0 pr-24 pb-24 grid'>
+            <p className='text-white text-4xl'>SCROLL</p>
+            <p className='text-white text-3xl'>\/</p>
+          </div> */}
           
          
           <div className='mt-40 ml-20 p-8'>
@@ -150,7 +155,11 @@ export default function TmpIndex({scores}) {
             <h3 className='pt-2'>Freelance</h3>
             <h3 className='pt-2'>Showstopper</h3>
 
-
+            <div className='absolute right-0 pr-0 sm:pr-8'>
+              <p className='text-white text-4xl'>SCROLL</p>
+              <p className='text-white text-6xl pl-24'>↓</p>
+              {/* <p className='text-white text-6xl pl-20'></p> */}
+            </div>
           </div>
 
           <div className='mt-40 ml-20 p-8'>
