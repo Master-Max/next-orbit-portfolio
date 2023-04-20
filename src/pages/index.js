@@ -130,7 +130,10 @@ export default function TmpIndex({scores}) {
       </Head>
       <main className='' onScroll={getScroll}>
         <div className='h-[200vh] relative z-20'>
-          <h2 className='pt-20 text-white'>HIIII</h2>
+          <h2 className='pt-20 pl-20 text-white'>Max Petersen</h2>
+          <h3 className='pt-12 pl-20 text-white'>Software Engineer</h3>
+          <h3 className='pt-2 pl-20 text-white'>Game Designer</h3>
+          <h3 className='pt-2 pl-20 text-white'>Backyard Astronomer</h3>
           {/* {(ttt!=null)? <p className='text-white'>Yes</p>:<p className='text-white'>No</p>} */}
         </div>
         <h1 className='relative font-bold text-3xl z-10 text-red-500'>Test</h1>

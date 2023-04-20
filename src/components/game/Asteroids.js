@@ -249,11 +249,29 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
           this.y > tmpCords.y && this.y < tmpCords.y + tmpCords.h){
             console.log('****************HIT****************');
             removeFromRenderQueue(this);
+            removeFromAsteroidQueue(this);
             obj.hitFace(1);
             player.addAmmo(1);
             // this = null;
             // player.ammo += 1;
           }
+      })
+    }
+
+    checkContact3(){
+      renderQueue.forEach((obj) => {
+        if(obj.type == 'asteroid'){
+          let tmpCords = obj.getCollisionBox();
+          if(this.x > tmpCords.x && this.x < tmpCords.x + tmpCords.w &&
+            this.y > tmpCords.y && this.y < tmpCords.y + tmpCords.h){
+              console.log('****************HIT****************');
+              removeFromRenderQueue(this);
+              obj.hitFace(1);
+              player.addAmmo(1);
+              // this = null;
+              // player.ammo += 1;
+            }
+        }
       })
     }
 
@@ -283,9 +301,9 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
       if( this.timer > this.burnOutTime ){
         // this.color = 'red';
         player.addAmmo(1);
-        removeFromRenderQueue(this)
+        removeFromRenderQueue(this);
       } else {
-        this.checkContact2();
+        this.checkContact3();
       }
 
       // const tmpDist = Math.pow((this.startingX - this.x) , 2) + Math.pow((this.startingY - this.y), 2);
@@ -473,6 +491,30 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
       return data;
     }
 
+    checkContact2(){
+      let data = {
+        result: false,
+        object: null
+      }
+
+      renderQueue.forEach((obj) => {
+        if(obj.type == 'asteroid'){
+          let tmpCords = obj.getCollisionBox();
+          if(this.x > tmpCords.x && this.x < tmpCords.x + tmpCords.w &&
+            this.y > tmpCords.y && this.y < tmpCords.y + tmpCords.h){
+              data = {
+                result: true,
+                object: obj
+              }
+              // obj.hitFace();
+              // this.takeDamage();
+            }
+        }
+      })
+
+      return data;
+    }
+
     addScore(s){
       this.score += s;
       if(this.score > this.nextExtraLifeGoal){
@@ -545,7 +587,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
       this.vy = 0;
       // makeTmpAnim();
       if(this.timer > this.respawnTimer){
-        let cc = this.checkContact()
+        let cc = this.checkContact2()
         if(cc.result){
           this.respawnTimer += 500;
         }else{
@@ -621,7 +663,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
         this.y += this.vy * delta;
 
         // this.checkContact();
-        const cc = this.checkContact()
+        const cc = this.checkContact2()
         // console.log(cc);
         if(cc.result){
           this.takeDamage();
@@ -872,11 +914,12 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
         let tmpAsteroid2 = this.generateChildAsteroid();
         renderQueue.push(tmpAsteroid1);
         renderQueue.push(tmpAsteroid2);
-        asteroidQueue.push(tmpAsteroid1);
-        asteroidQueue.push(tmpAsteroid2);
+        // asteroidQueue.push(tmpAsteroid1);
+        // asteroidQueue.push(tmpAsteroid2);
       }
       removeFromRenderQueue(this);
-      removeFromAsteroidQueue(this);
+      // removeFromAsteroidQueue(this);
+
       // if(this.isHit){this = null;}
       //Add Score To player
       //Remove THIS asteroid
@@ -1393,7 +1436,7 @@ export default function Asteroids({generateLeaderboard, allScores, setNewAllScor
     }
 
     renderQueue.push(asteroid);
-    asteroidQueue.push(asteroid);
+    // asteroidQueue.push(asteroid);
   }
 
 
