@@ -20,13 +20,13 @@ import { useState, useEffect } from "react";
 
 // import { camera } from "three";
 
-export default function SolarSystemBg({getCameraPos, t}) {
+export default function SolarSystemBg({getCameraPos}) {
 
   // const [cpos, setCpos] = useState([0, 0, 25]);
   // let test111 = getCameraPos();
   // console.log(test111);
-  console.log('TTT:', t);
-  const cpos = [0,0,t]
+  // console.log('TTT:', t);
+  const cpos = [0,0,25]
 
 
   // document.body.onscroll = moveCamera;

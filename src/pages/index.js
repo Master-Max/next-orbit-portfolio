@@ -65,7 +65,7 @@ export default function TmpIndex({scores}) {
   // const [z, setZ] = useState(25)
   // const [tt, setTT] = useState();
 
-  let ttt = null;
+  // let ttt = null;
 
   let z = 25;
   let y = 0;
@@ -77,7 +77,11 @@ export default function TmpIndex({scores}) {
     // clean up code
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
-    ttt = 25 + (document.body.getBoundingClientRect().top * -0.15);
+    // ttt = 25 + (document.body.getBoundingClientRect().top * -0.15);
+    const t = document.body.getBoundingClientRect().top;
+    z = 25 + (t * 0.15)
+    y = t * -0.08;
+
     // setTT(25 + (document.body.getBoundingClientRect().top * -0.15));
     return () => window.removeEventListener('scroll', onScroll);
 
@@ -124,10 +128,10 @@ export default function TmpIndex({scores}) {
         {/* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=''>
-        <div className='h-[200vh] relative z-20' onScroll={getScroll}>
+      <main className='' onScroll={getScroll}>
+        <div className='h-[200vh] relative z-20'>
           <h2 className='pt-20 text-white'>HIIII</h2>
-          {(ttt!=null)? <p className='text-white'>Yes</p>:<p className='text-white'>No</p>}
+          {/* {(ttt!=null)? <p className='text-white'>Yes</p>:<p className='text-white'>No</p>} */}
         </div>
         <h1 className='relative font-bold text-3xl z-10 text-red-500'>Test</h1>
         
@@ -152,7 +156,7 @@ export default function TmpIndex({scores}) {
         <Asteroids generateLeaderboard={generateLeaderboard} allScores={newAllScores} setNewAllScores={setNewAllScores}/>
 
 
-        <SolarSystemBg getCameraPos={getCameraPos} t={ttt}/>
+        <SolarSystemBg getCameraPos={getCameraPos}/>
       </main>
     </>
   )
