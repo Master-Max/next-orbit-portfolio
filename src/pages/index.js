@@ -119,6 +119,10 @@ export default function TmpIndex({scores}) {
     )
   }
 
+
+//   {/* {(ttt!=null)? <p className='text-white'>Yes</p>:<p className='text-white'>No</p>} */}
+
+
   return (
     <>
       <Head>
@@ -129,14 +133,36 @@ export default function TmpIndex({scores}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='' onScroll={getScroll}>
-        <div className='h-[200vh] relative z-20'>
-          <h2 className='pt-20 pl-20 text-white'>Max Petersen</h2>
-          <h3 className='pt-12 pl-20 text-white'>Software Engineer</h3>
-          <h3 className='pt-2 pl-20 text-white'>Game Designer</h3>
-          <h3 className='pt-2 pl-20 text-white'>Backyard Astronomer</h3>
-          {/* {(ttt!=null)? <p className='text-white'>Yes</p>:<p className='text-white'>No</p>} */}
+        <div className='h-[200vh] relative z-20 text-white'>
+          <div className='p-8'>
+            <h2 className='pt-20 pl-20 text-white text-2xl font-bold'>Max Petersen</h2>
+            <h3 className='pt-12 pl-20 text-white'>Software Engineer</h3>
+            <h3 className='pt-2 pl-20 text-white'>Game Designer</h3>
+            <h3 className='pt-2 pl-20 text-white'>Backyard Astronomer</h3>
+          </div>
+          
+         
+          <div className='mt-40 ml-20 p-8'>
+            <h2 className='pt-20 font-bold text-2xl'>Portfolio</h2>
+            <h3 className='pt-12'>Spicerack</h3>
+            <h3 className='pt-2'>StaySoFlo</h3>
+            <h3 className='pt-2'>LEDTruckMedia</h3>
+            <h3 className='pt-2'>Freelance</h3>
+            <h3 className='pt-2'>Showstopper</h3>
+
+
+          </div>
+
+          <div className='mt-40 ml-20 p-8'>
+            <h2 className='pt-20 font-bold text-2xl'>Get In Touch</h2>
+            <h3 className='pt-12'>Email: <a href="mailto:mglxp5@gmail.com">mglxp5@gmail.com</a></h3>
+            <h3 className='pt-2'>Github: <a href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Master-Max</a></h3>
+            <h3 className='pt-2'>LinkedIn: <a href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">max-petersen</a></h3>
+            <h3 className='pt-2'>Resume: <a href='/MaxPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Download</a></h3>
+          </div>
+
         </div>
-        <h1 className='relative font-bold text-3xl z-10 text-red-500'>Test</h1>
+        {/* <h1 className='relative font-bold text-3xl z-10 text-red-500'>Test</h1> */}
         
         {/* {(tt != undefined)? <p className='text-white'>Yayy</p> :<p className='text-white'>Nooo</p>} */}
         
