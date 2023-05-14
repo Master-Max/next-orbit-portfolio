@@ -10,6 +10,7 @@ import AsteroidScore from '@/models/asteroidScoreModel'
 import connectMongo from '@/lib/connectMongo'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export async function getServerSideProps(context) {
 
@@ -148,12 +149,12 @@ export default function TmpIndex({scores}) {
           
          
           <div className='mt-40 ml-20 p-8'>
-            <h2 className='pt-20 font-bold text-2xl'>Portfolio</h2>
-            <h3 className='pt-12'>Spicerack</h3>
-            <h3 className='pt-2'>StaySoFlo</h3>
-            <h3 className='pt-2'>LEDTruckMedia</h3>
-            <h3 className='pt-2'>Freelance</h3>
-            <h3 className='pt-2'>Showstopper</h3>
+            <h2 className='pt-20 font-bold text-2xl'>Links To Recent Work</h2>
+            <h3 className='pt-12'><Link href="https://welcome.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack</Link></h3>
+            <h3 className='pt-2'><Link href="https://staysoflo.com/" target="_blank" rel="noopener noreferrer">StaySoFlo</Link></h3>
+            <h3 className='pt-2'><Link href="https://www.ledtruckmedia.com/" target="_blank" rel="noopener noreferrer">LEDTruckMedia</Link></h3>
+            {/* <h3 className='pt-2'>Freelance</h3> */}
+            {/* <h3 className='pt-2'>Showstopper</h3> */}
 
             <div className='absolute right-0 pr-0 sm:pr-8'>
               <p className='text-white text-4xl'>SCROLL</p>
@@ -162,12 +163,12 @@ export default function TmpIndex({scores}) {
             </div>
           </div>
 
-          <div className='mt-40 ml-20 p-8'>
-            <h2 className='pt-20 font-bold text-2xl'>Get In Touch</h2>
-            <h3 className='pt-12'>Email: <a href="mailto:mglxp5@gmail.com">mglxp5@gmail.com</a></h3>
-            <h3 className='pt-2'>Github: <a href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Master-Max</a></h3>
-            <h3 className='pt-2'>LinkedIn: <a href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">max-petersen</a></h3>
-            <h3 className='pt-2'>Resume: <a href='/MaxPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Download</a></h3>
+          <div className='mt-40 ml-20 p-8 mb-20'>
+            <h2 className='pt-20 font-bold text-2xl'>Links To Get In Touch</h2>
+            <h3 className='pt-12'>Email: <Link href="mailto:mglxp5@gmail.com">mglxp5@gmail.com</Link></h3>
+            <h3 className='pt-2'>Github: <Link href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Master-Max</Link></h3>
+            <h3 className='pt-2'>LinkedIn: <Link href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">max-petersen</Link></h3>
+            <h3 className='pt-2'>Resume: <Link href='/MaxPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Download</Link></h3>
           </div>
 
         </div>
