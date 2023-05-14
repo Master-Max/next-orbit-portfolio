@@ -150,9 +150,9 @@ export default function TmpIndex({scores}) {
          
           <div className='mt-40 ml-20 p-8'>
             <h2 className='pt-20 font-bold text-2xl'>Links To Recent Work</h2>
-            <h3 className='pt-12'><Link href="https://welcome.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack</Link></h3>
-            <h3 className='pt-2'><Link href="https://staysoflo.com/" target="_blank" rel="noopener noreferrer">StaySoFlo</Link></h3>
-            <h3 className='pt-2'><Link href="https://www.ledtruckmedia.com/" target="_blank" rel="noopener noreferrer">LEDTruckMedia</Link></h3>
+            <h3 className='pt-12 hover:underline'><Link href="https://welcome.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href="https://staysoflo.com/" target="_blank" rel="noopener noreferrer">StaySoFlo</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href="https://www.ledtruckmedia.com/" target="_blank" rel="noopener noreferrer">LEDTruckMedia</Link></h3>
             {/* <h3 className='pt-2'>Freelance</h3> */}
             {/* <h3 className='pt-2'>Showstopper</h3> */}
 
@@ -165,10 +165,10 @@ export default function TmpIndex({scores}) {
 
           <div className='mt-40 ml-20 p-8 mb-20'>
             <h2 className='pt-20 font-bold text-2xl'>Links To Get In Touch</h2>
-            <h3 className='pt-12'>Email: <Link href="mailto:mglxp5@gmail.com">mglxp5@gmail.com</Link></h3>
-            <h3 className='pt-2'>Github: <Link href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Master-Max</Link></h3>
-            <h3 className='pt-2'>LinkedIn: <Link href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">max-petersen</Link></h3>
-            <h3 className='pt-2'>Resume: <Link href='/MaxPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Download</Link></h3>
+            <h3 className='pt-12 hover:underline'><Link href="mailto:mglxp5@gmail.com">Email: mglxp5@gmail.com</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Github: Master-Max</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">LinkedIn: max-petersen</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href='/MaximillianPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Resume: Download</Link></h3>
           </div>
 
         </div>
