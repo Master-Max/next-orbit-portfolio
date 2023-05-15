@@ -150,7 +150,7 @@ export default function TmpIndex({scores}) {
          
           <div className='mt-40 ml-20 p-8'>
             <h2 className='pt-20 font-bold text-2xl'>Links To Recent Work</h2>
-            <h3 className='pt-12 hover:underline'><Link href="https://welcome.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack</Link></h3>
+            <h3 className='pt-12 hover:underline'><Link href="https://welcome.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack &#40;NSFW&#41;</Link></h3>
             <h3 className='pt-2 hover:underline'><Link href="https://staysoflo.com/" target="_blank" rel="noopener noreferrer">StaySoFlo</Link></h3>
             <h3 className='pt-2 hover:underline'><Link href="https://www.ledtruckmedia.com/" target="_blank" rel="noopener noreferrer">LEDTruckMedia</Link></h3>
             {/* <h3 className='pt-2'>Freelance</h3> */}
