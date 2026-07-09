@@ -138,7 +138,7 @@ export default function TmpIndex({scores}) {
           Play My New Game Asteroid Defense:{' '}
           <a
             className="underline font-bold"
-            href="asteroid-defense-seven.vercel.app"
+            href="https://asteroid-defense-seven.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
           >
