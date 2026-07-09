@@ -133,12 +133,12 @@ export default function TmpIndex({scores}) {
         {/* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="relative z-50 bg-slate-800 w-full p-4 text-white text-center">
+      <div className="relative z-50 bg-slate-800 w-[100vw] p-4 text-white text-center">
         <h1>
           Play My New Game Asteroid Defense:{' '}
           <a
             className="underline font-bold"
-            href="https://master-max.github.io/asteroid-defense/"
+            href="asteroid-defense-seven.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
           >
