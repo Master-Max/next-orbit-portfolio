@@ -180,10 +180,10 @@ export default function TmpIndex({scores}) {
           </div>
 
           <div className='mt-40 ml-20 p-8 mb-20'>
-            <h2 className='pt-20 font-bold text-2xl'>Links To Get In Touch</h2>
+            <h2 className='pt-20 font-bold text-2xl'>Get In Touch</h2>
             <h3 className='pt-12 hover:underline'><Link href="mailto:max@stellarsoup.com">Email: max@stellarsoup.com</Link></h3>
-            <h3 className='pt-2 hover:underline'><Link href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Github: Master-Max</Link></h3>
-            <h3 className='pt-2 hover:underline'><Link href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">LinkedIn: max-petersen</Link></h3>
+            {/* <h3 className='pt-2 hover:underline'><Link href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Github: Master-Max</Link></h3> */}
+            {/* <h3 className='pt-2 hover:underline'><Link href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">LinkedIn: max-petersen</Link></h3> */}
             {/* <h3 className='pt-2 hover:underline'><Link href='/MaximillianPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Resume: Download</Link></h3> */}
           </div>
 
