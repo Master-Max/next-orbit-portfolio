@@ -138,7 +138,7 @@ export default function TmpIndex({scores}) {
           Play My New Game Asteroid Defense:{' '}
           <a
             className="underline font-bold"
-            href="https://asteroid-defense-seven.vercel.app"
+            href="https://ad.stellarsoup.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -163,11 +163,14 @@ export default function TmpIndex({scores}) {
          
           <div className='mt-40 ml-20 p-8'>
             <h2 className='pt-20 font-bold text-2xl'>Links To Recent Work</h2>
-            <h3 className='pt-12 hover:underline'><Link href="https://shops.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack &#40;NSFW&#41;</Link></h3>
-            <h3 className='pt-2 hover:underline'><Link href="https://staysoflo.com/" target="_blank" rel="noopener noreferrer">StaySoFlo</Link></h3>
-            <h3 className='pt-2 hover:underline'><Link href="https://www.ledtruckmedia.com/" target="_blank" rel="noopener noreferrer">LEDTruckMedia</Link></h3>
+            {/* <h3 className='pt-12 hover:underline'><Link href="https://shops.spicerack.market" target="_blank" rel="noopener noreferrer">Spicerack &#40;NSFW&#41;</Link></h3> */}
+            {/* <h3 className='pt-2 hover:underline'><Link href="https://staysoflo.com/" target="_blank" rel="noopener noreferrer">StaySoFlo</Link></h3> */}
+            {/* <h3 className='pt-2 hover:underline'><Link href="https://www.ledtruckmedia.com/" target="_blank" rel="noopener noreferrer">LEDTruckMedia</Link></h3> */}
             {/* <h3 className='pt-2'>Freelance</h3> */}
-            {/* <h3 className='pt-2'>Showstopper</h3> */}
+            <h3 className='pt-2 hover:underline'><Link href="https://ad.stellarsoup.com/" target="_blank" rel="noopener noreferrer">Asteroid Defense</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href="https://thefilmdiaries.org" target="_blank" rel="noopener noreferrer">The Film Diaries</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href="https://linear-edit-complete.vercel.app/" target="_blank" rel="noopener noreferrer">Showstopper</Link></h3>
+            <h3 className='pt-2 hover:underline'><Link href="https://soulmatemoons.vercel.app/" target="_blank" rel="noopener noreferrer">Soul Mate Moons</Link></h3>
 
             <div className='absolute right-0 pr-0 sm:pr-8'>
               <p className='text-white text-4xl'>SCROLL</p>
@@ -178,10 +181,10 @@ export default function TmpIndex({scores}) {
 
           <div className='mt-40 ml-20 p-8 mb-20'>
             <h2 className='pt-20 font-bold text-2xl'>Links To Get In Touch</h2>
-            <h3 className='pt-12 hover:underline'><Link href="mailto:mglxp5@gmail.com">Email: mglxp5@gmail.com</Link></h3>
+            <h3 className='pt-12 hover:underline'><Link href="mailto:max@stellarsoup.com">Email: max@stellarsoup.com</Link></h3>
             <h3 className='pt-2 hover:underline'><Link href="https://github.com/Master-Max" target="_blank" rel="noopener noreferrer">Github: Master-Max</Link></h3>
             <h3 className='pt-2 hover:underline'><Link href='https://www.linkedin.com/in/max-petersen/' target="_blank" rel="noopener noreferrer">LinkedIn: max-petersen</Link></h3>
-            <h3 className='pt-2 hover:underline'><Link href='/MaximillianPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Resume: Download</Link></h3>
+            {/* <h3 className='pt-2 hover:underline'><Link href='/MaximillianPetersenResume.pdf' alt="resume download" target="_blank" rel="noopener noreferrer">Resume: Download</Link></h3> */}
           </div>
 
         </div>
